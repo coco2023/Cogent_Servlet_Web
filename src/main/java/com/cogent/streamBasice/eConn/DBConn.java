@@ -95,9 +95,8 @@ public class DBConn {
 			ResultSet rs = stmt.executeQuery(QUERY);
 			
 //			ArrayList<Product> proList = new ArrayList<Product>();
-			
+//			int id, String name, float cost, float discount, boolean availabe, int sold
 			while(rs.next()) {
-				// int id, String name, float cost, float discount, boolean availabe, int sold
 				int id = rs.getInt("id");
 				String name = rs.getString("name");
 				float cost = rs.getFloat("cost");	
@@ -108,6 +107,7 @@ public class DBConn {
 				}	
 			
 			proList.stream().forEach(System.out::println);
+			
 			sortByDiscount();
 			sortBySold();
 			sortByCost();
