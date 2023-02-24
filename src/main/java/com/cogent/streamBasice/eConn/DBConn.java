@@ -50,7 +50,9 @@ public class DBConn {
 	
 	public void sortBySold() {
 		System.out.println("#######sortBySold######");
-		List<Product> proBucket =  proList.stream().sorted(Comparator.comparingInt(Product::getSold)).map(pr -> pr).toList();
+		List<Product> proBucket =  proList.stream()
+				.sorted(Comparator.comparingInt(Product::getSold))
+				.map(pr -> pr).toList();
 		System.out.println(proBucket);
 		System.out.println("#############");
 		}
@@ -73,9 +75,16 @@ public class DBConn {
 		
 		List<Product> proBucket = proList.stream()
 				.filter(productSold -> productSold.sold > 10)
-				.map(pro -> new Product(pro.getId(), pro.getName(), pro.getCost(), pro.getDiscount() - 0.1f, pro.getAvailable(), pro.getSold()))
+				.map(pro -> new Product(
+									pro.getId(), 
+									pro.getName(), 
+									pro.getCost(), 
+									pro.getDiscount() - 0.1f, 
+									pro.getAvailable(), 
+									pro.getSold()))
 //				.forEach(System.out::println);
 				.collect(Collectors.toList());
+		
 		System.out.println(proBucket);
 		System.out.println("#############");
 		}
@@ -98,6 +107,7 @@ public class DBConn {
 				int sold = rs.getInt("sold");
 				proList.add(new Product(id, name, cost, discount, available, sold));
 				}	
+			
 			proList.stream().forEach(System.out::println);
 			sortByDiscount();
 			sortBySold();
@@ -146,7 +156,7 @@ public class DBConn {
 	        pstmt.setInt(6, sold);
 	        
 	        pstmt.executeUpdate();
-	        // Close all the connections
+//	        // Close all the connections
 //	        pstmt.close();
 //	        conn.close();
 		}
