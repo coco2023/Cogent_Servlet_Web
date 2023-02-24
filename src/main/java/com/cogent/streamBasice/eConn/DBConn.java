@@ -82,7 +82,6 @@ public class DBConn {
 									pro.getDiscount() - 0.1f, 
 									pro.getAvailable(), 
 									pro.getSold()))
-//				.forEach(System.out::println);
 				.collect(Collectors.toList());
 		
 		System.out.println(proBucket);
